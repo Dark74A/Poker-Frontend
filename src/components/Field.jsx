@@ -1,0 +1,16 @@
+import "../styles/Field.css";
+
+export function Field({ label, error, children, hint }) {
+  return (
+    <label className="field">
+      <span className="field-label">{label}</span>
+      {children}
+      {hint && !error ? <span className="field-hint">{hint}</span> : null}
+      {error ? <span className="field-error">{error}</span> : null}
+    </label>
+  );
+}
+
+export function TextInput(props) {
+  return <input className="text-input" {...props} />;
+}

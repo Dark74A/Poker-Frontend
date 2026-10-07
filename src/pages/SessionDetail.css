@@ -1,0 +1,246 @@
+.session-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-2);
+  flex-wrap: wrap;
+}
+.session-detail-back {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--color-ink-faint);
+  font-weight: 500;
+  margin-bottom: var(--space-3);
+  transition: color 120ms ease;
+}
+.session-detail-back:hover {
+  color: var(--color-brass);
+}
+.session-detail-title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.session-detail-title-row h1 {
+  font-size: 28px;
+}
+.live-connection {
+  font-size: 11px;
+  color: var(--color-ink-faint);
+}
+.live-connection--connected {
+  color: var(--color-success, #4c9a72);
+}
+.session-detail-lifecycle {
+  display: flex;
+  gap: 8px;
+  padding-top: 4px;
+}
+.session-detail-lifecycle-error {
+  background: var(--color-loss-soft);
+  border: 1px solid var(--color-loss);
+  color: var(--color-loss);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  margin: var(--space-3) 0;
+}
+.session-detail-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--space-6) 0 var(--space-4);
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.session-detail-section-head h2 {
+  font-size: 19px;
+}
+.session-detail-section-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.session-detail-history-link {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-ink-faint);
+  border-bottom: 1px solid transparent;
+  transition:
+    color 120ms ease,
+    border-color 120ms ease;
+}
+.session-detail-history-link:hover {
+  color: var(--color-brass-strong);
+  border-color: currentColor;
+}
+
+.asof-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.asof-header,
+.asof-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.asof-title {
+  display: block;
+  color: var(--color-ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.asof-subtitle {
+  display: block;
+  margin-top: 3px;
+  color: var(--color-ink-muted);
+  font-size: 12px;
+}
+
+.asof-event-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 38px;
+  color: var(--color-ink);
+  font-size: 13px;
+}
+
+.asof-event-info span {
+  color: var(--color-ink-muted);
+  font-size: 11px;
+}
+
+.asof-slider-container {
+  position: relative;
+  /* Adjusted padding to cleanly house the track and markers on the same axis */
+  padding: 16px 8px;
+  margin: 0 8px;
+}
+.asof-slider {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  position: relative;
+  z-index: 4;
+
+  width: 100%;
+  height: 4px;
+  margin: 0;
+  border-radius: 999px;
+  background: var(--color-border-strong);
+  cursor: pointer;
+}
+
+.asof-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: transparent;
+}
+
+.asof-slider::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  background: transparent;
+}
+
+/* THE DRAGGABLE CURRENT-EVENT MARKER */
+.asof-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+
+  border: 2px solid var(--color-bg-raised);
+  border-radius: 50%;
+  background: var(--color-brass);
+  box-shadow: 0 0 0 1px var(--color-brass);
+
+  cursor: grab;
+}
+
+.asof-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+
+  border: 2px solid var(--color-bg-raised);
+  border-radius: 50%;
+  background: var(--color-brass);
+  box-shadow: 0 0 0 1px var(--color-brass);
+
+  cursor: grab;
+}
+
+.asof-slider:active::-webkit-slider-thumb {
+  cursor: grabbing;
+}
+
+.asof-slider:active::-moz-range-thumb {
+  cursor: grabbing;
+}
+
+.asof-markers {
+  position: absolute;
+  top: 16px;
+  left: 8px;
+  right: 8px;
+  height: 4px;
+  pointer-events: none;
+}
+.asof-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 8px;
+  height: 8px;
+
+  padding: 0;
+  border: 1px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--color-brass);
+
+  cursor: pointer;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.asof-marker.selected {
+  opacity: 0;
+}
+
+.asof-marker:hover {
+  transform: translate(-50%, -50%);
+}
+
+.asof-controls {
+  justify-content: center;
+  gap: 16px;
+}
+
+.asof-position {
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.asof-loading,
+.asof-empty {
+  padding: 14px;
+  color: var(--color-ink-muted);
+  font-size: 13px;
+}

@@ -1,0 +1,129 @@
+:root {
+  --color-bg: #15130f;
+  --color-bg-raised: #1c1a15;
+  --color-surface: #221f19;
+  --color-surface-hover: #29261f;
+  --color-border: #35312688;
+  --color-border-strong: #4a4536;
+
+  --color-felt: #2f5d4f;
+  --color-felt-soft: #2f5d4f33;
+
+  --color-brass: #c69749;
+  --color-brass-soft: #c6974922;
+  --color-brass-strong: #dbae63;
+
+  --color-ink: #f3eee3;
+  --color-ink-dim: #cbc2ad;
+  --color-ink-faint: #8d8471;
+
+  --color-win: #6fa06a;
+  --color-win-soft: #6fa06a1e;
+  --color-loss: #c1604c;
+  --color-loss-soft: #c1604c1e;
+
+  --color-danger: #c1604c;
+  --color-danger-strong: #d97158;
+
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-card:
+    0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px -8px rgba(0, 0, 0, 0.5);
+  --shadow-raised:
+    0 2px 8px rgba(0, 0, 0, 0.35), 0 16px 40px -12px rgba(0, 0, 0, 0.6);
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background:
+    radial-gradient(
+      ellipse 1200px 600px at 50% -10%,
+      #23291f 0%,
+      transparent 60%
+    ),
+    var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--color-ink);
+}
+p {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+}
+:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+::selection {
+  background: var(--color-brass-soft);
+  color: var(--color-brass-strong);
+}
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

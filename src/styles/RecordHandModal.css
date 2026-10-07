@@ -1,0 +1,69 @@
+.hand-modal-hint {
+  font-size: 13px;
+  color: var(--color-ink-faint);
+  line-height: 1.55;
+  margin-bottom: var(--space-4);
+}
+.hand-modal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 280px;
+  overflow-y: auto;
+  margin-bottom: var(--space-4);
+}
+.hand-modal-row {
+  display: grid;
+  grid-template-columns: 1fr 130px;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 6px 0;
+}
+.hand-modal-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.hand-modal-input {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: 8px 12px 8px 11px;
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  text-align: center;
+}
+.hand-modal-input:focus {
+  outline: none;
+  border-color: var(--color-brass);
+  background: var(--color-bg-raised);
+}
+.hand-modal-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 700;
+  border: 1px solid var(--color-border-strong);
+}
+.hand-modal-total.is-balanced {
+  color: var(--color-win);
+  border-color: var(--color-win-soft);
+  background: var(--color-win-soft);
+}
+.hand-modal-total.is-unbalanced {
+  color: var(--color-loss);
+  border-color: var(--color-loss-soft);
+  background: var(--color-loss-soft);
+}
+.hand-modal-warning {
+  font-size: 12.5px;
+  color: var(--color-loss);
+  margin-top: 8px;
+}
+.hand-modal-input::-webkit-inner-spin-button,
+.hand-modal-input::-webkit-outer-spin-button {
+  margin-left: 10px;
+}

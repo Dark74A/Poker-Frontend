@@ -1,0 +1,111 @@
+.auth-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.auth-visual {
+  position: relative;
+  background:
+    radial-gradient(circle at 30% 20%, #2f5d4f55 0%, transparent 55%),
+    radial-gradient(circle at 80% 85%, #c6974922 0%, transparent 50%), #1a2620;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-right: 1px solid var(--color-border);
+}
+.auth-visual-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-7);
+  padding: var(--space-6);
+}
+.felt-mark {
+  color: var(--color-brass);
+  animation: felt-breathe 6s ease-in-out infinite;
+}
+@keyframes felt-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.035);
+    opacity: 1;
+  }
+}
+.auth-visual-copy {
+  text-align: center;
+  max-width: 380px;
+}
+.auth-visual-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-brass);
+  margin: 0 0 var(--space-4);
+}
+.auth-visual-copy h2 {
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--color-ink);
+  font-weight: 500;
+}
+.auth-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+}
+.auth-panel-inner {
+  width: 100%;
+  max-width: 360px;
+}
+.auth-eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-brass);
+  margin-bottom: var(--space-3);
+}
+.auth-panel-inner h1 {
+  font-size: 30px;
+  margin-bottom: var(--space-2);
+}
+.auth-subtitle {
+  color: var(--color-ink-faint);
+  font-size: 14px;
+  margin-bottom: var(--space-6);
+}
+.auth-form {
+  margin-top: var(--space-5);
+}
+.auth-footer {
+  margin-top: var(--space-6);
+  font-size: 13.5px;
+  color: var(--color-ink-faint);
+  text-align: center;
+}
+.auth-footer a {
+  color: var(--color-brass-strong);
+  font-weight: 600;
+}
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 860px) {
+  .auth-shell {
+    grid-template-columns: 1fr;
+  }
+  .auth-visual {
+    display: none;
+  }
+  .auth-panel {
+    padding: var(--space-5);
+  }
+}

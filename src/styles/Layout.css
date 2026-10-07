@@ -1,0 +1,85 @@
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  background: rgba(21, 19, 15, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-brass-strong);
+  letter-spacing: -0.01em;
+}
+.app-user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.app-user-name {
+  font-size: 14px;
+  color: var(--color-ink-dim);
+  font-weight: 500;
+}
+.app-user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--color-felt);
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  border: 1px solid var(--color-border-strong);
+}
+.app-logout {
+  background: none;
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-ink-faint);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 12.5px;
+  font-weight: 600;
+  transition:
+    color 120ms ease,
+    border-color 120ms ease;
+}
+.app-logout:hover {
+  color: var(--color-ink);
+  border-color: var(--color-ink-faint);
+}
+.app-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+@media (max-width: 640px) {
+  .app-header {
+    padding: 14px var(--space-4);
+  }
+  .app-main {
+    padding: var(--space-4);
+  }
+  .app-user-name {
+    display: none;
+  }
+}
