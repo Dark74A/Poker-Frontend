@@ -10,7 +10,6 @@ export function PlayerTable({
   onCashOut,
   onRemove,
 }) {
-  const activePlayers = players.filter((p) => p.status !== "INACTIVE");
   return (
     <div className="player-table">
       <div className="player-table-head">
@@ -22,7 +21,7 @@ export function PlayerTable({
         <span className="player-table-actions-head">Actions</span>
       </div>
 
-      {activePlayers.map((p) => {
+      {players.filter((p) => p.status !== "INACTIVE").map((p) => {
         const isInactive = p.status === "INACTIVE";
         const isUp = p.profitLoss > 0;
         const isFlat = p.profitLoss === 0;

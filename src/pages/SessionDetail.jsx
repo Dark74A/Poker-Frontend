@@ -21,6 +21,7 @@ import {
   getSessionEvents,
   addPlayer,
   removePlayer,
+  leaveSession,
   addCashOut,
   recordHand,
   closeSession,
@@ -43,6 +44,7 @@ export default function SessionDetail() {
   const [amountModal, setAmountModal] = useState(null);
   const [handModalOpen, setHandModalOpen] = useState(false);
   const [removeTarget, setRemoveTarget] = useState(null);
+  const [leaveDialogOpen, setLeaveDialogOpen] = useState(false);
   const [lifecycleError, setLifecycleError] = useState("");
   const [buyInModalOpen, setBuyInModalOpen] = useState(false);
   const [liveConnection, setLiveConnection] = useState("connecting");
@@ -188,6 +190,15 @@ export default function SessionDetail() {
     },
   });
 
+  const leaveSessionMutation = useMutation({
+    mutationFn: () => leaveSession(sessionId),
+    onSuccess: () => {
+      invalidate();
+      setLeaveDialogOpen(false);
+      toast.success("You left the session.");
+    },
+  });
+
   const cashOutMutation = useMutation({
     mutationFn: ({ playerId, amount }) =>
       addCashOut(sessionId, { playerId, amount }),
@@ -266,9 +277,21 @@ export default function SessionDetail() {
   }
 
   const isHost = user?.userId === session.hostId;
+  const currentPlayer = session.players.find(
+    (player) => player.userId === user?.userId && player.status !== "INACTIVE",
+  );
   const isActive = session.status === "ACTIVE";
   const canManage = isHost && !isHistoricalView;
   const currentAmountMutation = cashOutMutation;
+
+  async function copyInviteCode() {
+    try {
+      await navigator.clipboard.writeText(session.inviteCode);
+      toast.success("Invite code copied.");
+    } catch {
+      toast.error("Could not copy the invite code. Select and copy it manually.");
+    }
+  }
 
   return (
     <Layout>
@@ -324,6 +347,19 @@ export default function SessionDetail() {
           </div>
         ) : null}
       </div>
+
+      {canManage && isActive && session.inviteCode ? (
+        <div className="session-invite-code">
+          <div>
+            <span className="session-invite-label">Invite code</span>
+            <strong>{session.inviteCode}</strong>
+            <span className="session-invite-hint">Share this code so players can join.</span>
+          </div>
+          <Button size="sm" variant="secondary" onClick={copyInviteCode}>
+            Copy code
+          </Button>
+        </div>
+      ) : null}
 
       {lifecycleError ? (
         <div className="session-detail-lifecycle-error" role="alert">
@@ -475,6 +511,18 @@ export default function SessionDetail() {
               </Button>
             </>
           ) : null}
+          {currentPlayer && isActive && !isHistoricalView ? (
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => {
+                leaveSessionMutation.reset();
+                setLeaveDialogOpen(true);
+              }}
+            >
+              Leave session
+            </Button>
+          ) : null}
         </div>
       </div>
 
@@ -575,6 +623,23 @@ export default function SessionDetail() {
         error={
           removePlayerMutation.isError
             ? getErrorMessage(removePlayerMutation.error)
+            : ""
+        }
+      />
+      <ConfirmDialog
+        open={leaveDialogOpen}
+        onClose={() => {
+          leaveSessionMutation.reset();
+          setLeaveDialogOpen(false);
+        }}
+        title="Leave session"
+        description="You can leave only after your chip stack reaches zero. Cash out first if you still have chips."
+        confirmLabel="Leave"
+        onConfirm={() => leaveSessionMutation.mutate()}
+        isSubmitting={leaveSessionMutation.isPending}
+        error={
+          leaveSessionMutation.isError
+            ? getErrorMessage(leaveSessionMutation.error)
             : ""
         }
       />

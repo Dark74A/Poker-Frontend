@@ -48,6 +48,37 @@
   border-radius: var(--radius-md);
   margin: var(--space-3) 0;
 }
+.session-invite-code {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: var(--space-4) 0;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-raised);
+}
+.session-invite-code > div {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.session-invite-label {
+  color: var(--color-ink-faint);
+  font-size: 12px;
+}
+.session-invite-code strong {
+  color: var(--color-brass-strong);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.12em;
+}
+.session-invite-hint {
+  color: var(--color-ink-faint);
+  font-size: 12px;
+}
 .session-detail-section-head {
   display: flex;
   align-items: center;

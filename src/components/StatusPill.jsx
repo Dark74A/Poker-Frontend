@@ -5,6 +5,7 @@ const LABELS = {
   CLOSED: "Closed",
   ARCHIVED: "Archived",
   INACTIVE: "Removed",
+  NOT_IN_SESSION: "Not in session",
   CREATED: "Active",
 };
 

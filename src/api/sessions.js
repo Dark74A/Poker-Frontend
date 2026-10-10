@@ -1,12 +1,19 @@
 import { apiClient } from "./client";
 
-export async function listSessions() {
-  const { data } = await apiClient.get("/sessions");
+export async function listSessions({ page = 0, size = 12, filter = "all", sort = "newest" } = {}) {
+  const { data } = await apiClient.get("/sessions", {
+    params: { page, size, filter, sort },
+  });
   return data;
 }
 
 export async function createSession({ name, description }) {
   const { data } = await apiClient.post("/sessions", { name, description });
+  return data;
+}
+
+export async function joinSessionWithCode(inviteCode) {
+  const { data } = await apiClient.post("/sessions/join", { inviteCode });
   return data;
 }
 
@@ -47,6 +54,10 @@ export async function findPlayerCandidates(sessionId, query) {
 
 export async function removePlayer(sessionId, playerId) {
   await apiClient.delete(`/sessions/${sessionId}/players/${playerId}`);
+}
+
+export async function leaveSession(sessionId) {
+  await apiClient.delete(`/sessions/${sessionId}/players/me`);
 }
 
 export async function recordBuyIn(sessionId, deltas) {
