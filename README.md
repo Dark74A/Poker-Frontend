@@ -55,6 +55,14 @@ Pages / Components   TanStack Query
 
 The frontend is responsible for presentation and client-side interaction. Business rules and persistent game state are handled by the backend.
 
+## Session Features
+
+- Hosts can share a generated session invite code; signed-in users can join with that code.
+- Players can leave a session after their chip stack reaches zero. The session card shows when the current user has left or been removed.
+- The dashboard filters sessions by all, hosted, or player-only, and requests paginated results from the backend.
+- Dashboard sorting supports newest, oldest, name, and active sessions first. Page sizes can be set to 12, 24, or 48 sessions.
+- Session views receive live updates over WebSockets/STOMP and visualize the event timeline.
+
 ## Working Structure
 
 ### React Components
@@ -304,6 +312,16 @@ http://localhost:5173
 Open that URL in the browser.
 
 The backend must also be running and its CORS configuration must allow the frontend origin.
+
+### Local Docker deployment
+
+From the combined project root, run:
+
+```bash
+docker compose up --build
+```
+
+Open `http://localhost:3000`. The frontend container serves the application through Nginx, which load balances REST and WebSocket requests across two backend instances. Redis relays live session updates between those instances.
 
 For local development, the expected setup is:
 
